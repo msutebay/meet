@@ -15,11 +15,11 @@ public abstract class BaseEntity {
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
-    public BaseEntity() {
+    protected BaseEntity() {
         super();
     }
 
-    public BaseEntity(Long id) {
+    protected BaseEntity(Long id) {
         this.id = id;
     }
 

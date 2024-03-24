@@ -13,11 +13,15 @@ import java.util.List;
 @RestController
 public class MeetingQueryController implements MeetingQueryControllerApi {
 
-    @Autowired
-    private MeetingService service;
+    private final MeetingService service;
+
+    private final ModelContractMapper mapper;
 
     @Autowired
-    private ModelContractMapper mapper;
+    public MeetingQueryController(MeetingService service, ModelContractMapper mapper) {
+        this.service = service;
+        this.mapper = mapper;
+    }
 
     @Override
     public ResponseEntity<List<Meeting>> getMeetings() {

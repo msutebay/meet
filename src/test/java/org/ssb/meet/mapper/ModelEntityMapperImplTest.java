@@ -16,12 +16,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
-public class ModelEntityMapperImplTest {
+class ModelEntityMapperImplTest {
 
 
     // mapParticipantModelToEntity should correctly map a Participant domain model to a ParticipantEntity entity
     @Test
-    public void map_participant_model_to_entity_successfully() {
+    void map_participant_model_to_entity_successfully() {
         // Arrange
         ModelMapper modelMapper = mock(ModelMapper.class);
         ModelEntityMapperImpl mapper = new ModelEntityMapperImpl(modelMapper);
@@ -38,7 +38,7 @@ public class ModelEntityMapperImplTest {
 
     // mapParticipantEntityToModel should correctly map a ParticipantEntity entity to a Participant domain model
     @Test
-    public void map_participant_entity_to_model_successfully() {
+    void map_participant_entity_to_model_successfully() {
         // Arrange
         ModelMapper modelMapper = new ModelMapper();
         ModelEntityMapperImpl mapper = new ModelEntityMapperImpl(modelMapper);
@@ -55,7 +55,7 @@ public class ModelEntityMapperImplTest {
 
     // mapMeetingRoomEntityToModel should correctly map a MeetingRoomEntity entity to a MeetingRoom domain model
     @Test
-    public void map_meeting_room_entity_to_model_successfully() {
+    void map_meeting_room_entity_to_model_successfully() {
         // Arrange
         ModelMapper modelMapper = new ModelMapper();
         ModelEntityMapperImpl mapper = new ModelEntityMapperImpl(modelMapper);
@@ -72,7 +72,7 @@ public class ModelEntityMapperImplTest {
 
     // mapMeetingEntityToModel should correctly map a MeetingEntity entity to a MeetingRoom domain model
     @Test
-    public void map_meeting_entity_to_model_successfully() {
+    void map_meeting_entity_to_model_successfully() {
         // Arrange
         ModelMapper modelMapper = new ModelMapper();
         ModelEntityMapperImpl mapper = new ModelEntityMapperImpl(modelMapper);

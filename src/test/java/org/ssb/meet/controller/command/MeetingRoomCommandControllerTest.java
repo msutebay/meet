@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
-public class MeetingRoomCommandControllerTest {
+class MeetingRoomCommandControllerTest {
 
     MeetingRoomCommandController controller = new MeetingRoomCommandController();
     MeetingRoomService mockService;
@@ -23,7 +23,7 @@ public class MeetingRoomCommandControllerTest {
     MessageSource messageSource;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         mockService = mock(MeetingRoomService.class);
         mockMapper = mock(ModelContractMapper.class);
         validator = new InputValidator();
@@ -37,7 +37,7 @@ public class MeetingRoomCommandControllerTest {
 
     // Valid MeetingRoom object is passed, with name length between 3 and 20 characters
     @Test
-    public void meeting_room_successfully_saved() {
+    void meeting_room_successfully_saved() {
         // Arrange
         MeetingRoom meetingRoom = new MeetingRoom(1L, "Valid Room");
         org.ssb.meet.model.MeetingRoom savedMeetingRoom = new org.ssb.meet.model.MeetingRoom(1L, "Valid Room");
@@ -53,7 +53,7 @@ public class MeetingRoomCommandControllerTest {
 
     // MeetingRoom name length is less than 3 characters
     @Test
-    public void short_meeting_room_names_are_not_allowed() {
+    void short_meeting_room_names_are_not_allowed() {
         MeetingRoom meetingRoom = new MeetingRoom(1L, "AB");
         ResponseEntity<MeetingRoom> response = controller.saveMeetingRoom(meetingRoom);
 
@@ -63,7 +63,7 @@ public class MeetingRoomCommandControllerTest {
 
     // MeetingRoom name length is greater than 20 characters
     @Test
-    public void long_meeting_room_names_are_not_allowed() {
+    void long_meeting_room_names_are_not_allowed() {
         MeetingRoom meetingRoom = new MeetingRoom(1L, "This is a very long meeting room name");
         ResponseEntity<MeetingRoom> response = controller.saveMeetingRoom(meetingRoom);
 

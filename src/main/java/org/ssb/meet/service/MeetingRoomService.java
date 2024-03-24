@@ -4,13 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.ssb.meet.entity.MeetingRoomEntity;
-import org.ssb.meet.entity.ParticipantEntity;
 import org.ssb.meet.mapper.ModelEntityMapper;
 import org.ssb.meet.model.MeetingRoom;
-import org.ssb.meet.model.Participant;
 import org.ssb.meet.repository.MeetingRoomRepository;
-import org.ssb.meet.repository.ParticipantRepository;
-
 import java.util.List;
 import java.util.Optional;
 

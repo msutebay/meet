@@ -12,11 +12,15 @@ import java.util.List;
 @RestController
 public class MeetingRoomQueryController implements MeetingRoomQueryControllerApi {
 
-    @Autowired
-    private MeetingRoomService service;
+    private final MeetingRoomService service;
+
+    private final ModelContractMapper mapper;
 
     @Autowired
-    private ModelContractMapper mapper;
+    public MeetingRoomQueryController(MeetingRoomService service, ModelContractMapper mapper) {
+        this.service = service;
+        this.mapper = mapper;
+    }
 
     @Override
     public ResponseEntity<List<MeetingRoom>> getMeetingRooms() {

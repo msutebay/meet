@@ -54,18 +54,6 @@ public class ModelContractMapperImpl implements ModelContractMapper {
         return modelMapper.map(contract, Meeting.class);
     }
 
-    /*
-    @Override
-    public org.ssb.meet.openapi.model.Participant mapParticipantModelToContract(Participant domainModel) {
-        return modelMapper.map(domainModel, org.ssb.meet.openapi.model.Participant.class);
-    }
-
-    @Override
-    public Participant mapParticipantContractToModel(org.ssb.meet.openapi.model.Participant contract) {
-        return modelMapper.map(contract, Participant.class);
-    }
-    */
-
     private <D, C> C mapDomainModelToContract(D domainModel, Function<D, C> mapper) {
         return mapper.apply(domainModel);
     }

@@ -7,7 +7,6 @@ import org.ssb.meet.entity.ParticipantEntity;
 import org.ssb.meet.mapper.ModelEntityMapper;
 import org.ssb.meet.model.Participant;
 import org.ssb.meet.repository.ParticipantRepository;
-
 import java.util.List;
 import java.util.Optional;
 

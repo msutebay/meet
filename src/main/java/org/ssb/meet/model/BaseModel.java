@@ -9,13 +9,13 @@ public abstract class BaseModel {
     private LocalDateTime updatedAt;
 
     // Constructor
-    public BaseModel(Long id) {
+    protected BaseModel(Long id) {
         this.id = id;
         this.createdAt = LocalDateTime.now();
         this.updatedAt = LocalDateTime.now();
     }
 
-    public BaseModel() {
+    protected BaseModel() {
     }
 
     // Getters and setters

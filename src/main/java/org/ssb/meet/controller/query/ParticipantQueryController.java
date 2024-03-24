@@ -13,11 +13,15 @@ import java.util.List;
 @RestController
 public class ParticipantQueryController implements ParticipantQueryControllerApi {
 
-    @Autowired
-    private ParticipantService service;
+    private final ParticipantService service;
+
+    private final ModelContractMapper mapper;
 
     @Autowired
-    private ModelContractMapper mapper;
+    public ParticipantQueryController(ParticipantService service, ModelContractMapper mapper) {
+        this.service = service;
+        this.mapper = mapper;
+    }
 
     @Override
     public ResponseEntity<List<Participant>> getParticipants() {

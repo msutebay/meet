@@ -14,12 +14,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
-public class ModelContractMapperImplTest {
+class ModelContractMapperImplTest {
     // Mapping a Participant domain model to a Participant contract should return a valid Participant contract
     ModelMapper modelMapper = new ModelMapper();
 
     @Test
-    public void map_participant_model_to_contract_successfully() {
+    void map_participant_model_to_contract_successfully() {
         // Arrange
         ModelMapper modelMapper = mock(ModelMapper.class);
         ModelContractMapperImpl mapper = new ModelContractMapperImpl(modelMapper);
@@ -37,7 +37,7 @@ public class ModelContractMapperImplTest {
 
     // Mapping a Participant contract to a Participant domain model should return a valid Participant domain model
     @Test
-    public void map_participant_contract_to_domain_model_successfully() {
+    void map_participant_contract_to_domain_model_successfully() {
         // Create a mock Participant contract
         org.ssb.meet.openapi.model.Participant contract = new org.ssb.meet.openapi.model.Participant();
         contract.setId(1L);
@@ -64,7 +64,7 @@ public class ModelContractMapperImplTest {
 
     // Mapping a MeetingRoom domain model to a MeetingRoom contract should return a valid MeetingRoom contract
     @Test
-    public void map_meeting_room_model_to_contract_successfully() {
+    void map_meeting_room_model_to_contract_successfully() {
         // Create a mock ModelMapper
         ModelMapper modelMapperMock = Mockito.mock(ModelMapper.class);
 
@@ -89,7 +89,7 @@ public class ModelContractMapperImplTest {
 
     // Mapping a MeetingRoom contract to a MeetingRoom domain model should return a valid MeetingRoom domain model
     @Test
-    public void map_meeting_room_contract_to_model_successfully() {
+    void map_meeting_room_contract_to_model_successfully() {
         // Create a mock ModelMapper
         ModelMapper modelMapperMock = Mockito.mock(ModelMapper.class);
 
@@ -117,7 +117,7 @@ public class ModelContractMapperImplTest {
 
     // Mapping a Meeting domain model to a Meeting contract should return a valid Meeting contract
     @Test
-    public void map_meeting_model_to_contract_successfully() {
+    void map_meeting_model_to_contract_successfully() {
         // Create a mock Meeting domain model
         MeetingRoom meetingRoom = new MeetingRoom(1L, "Room 1");
         List<Participant> participants = new ArrayList<>();
@@ -152,7 +152,7 @@ public class ModelContractMapperImplTest {
 
     // Mapping a Meeting contract to a Meeting domain model should return a valid Meeting domain model
     @Test
-    public void map_meeting_contract_to_model_successfully() {
+    void map_meeting_contract_to_model_successfully() {
         // Create a mock Meeting contract
         org.ssb.meet.openapi.model.Meeting contract = new org.ssb.meet.openapi.model.Meeting();
         contract.setId(1L);

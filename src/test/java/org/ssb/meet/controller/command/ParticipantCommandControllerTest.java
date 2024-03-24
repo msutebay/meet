@@ -9,11 +9,11 @@ import org.ssb.meet.service.ParticipantService;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-public class ParticipantCommandControllerTest {
+class ParticipantCommandControllerTest {
 
     // Controller successfully saves a new participant
     @Test
-    public void participant_successfully_saved() {
+    void participant_successfully_saved() {
         // Arrange
         ParticipantService mockService = mock(ParticipantService.class);
         ModelContractMapper mockMapper = mock(ModelContractMapper.class);

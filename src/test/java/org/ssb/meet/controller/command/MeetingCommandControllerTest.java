@@ -24,11 +24,11 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class MeetingCommandControllerTest {
+class MeetingCommandControllerTest {
 
     // Meeting is successfully saved
     @Test
-    public void meeting_successfully_saved() throws MeetingRoomNotAvailableException, ParticipantNotAvailableException {
+    void meeting_successfully_saved() throws MeetingRoomNotAvailableException, ParticipantNotAvailableException {
         // Arrange
         MeetingService mockService = mock(MeetingService.class);
         ModelContractMapper mockMapper = mock(ModelContractMapper.class);
@@ -56,7 +56,7 @@ public class MeetingCommandControllerTest {
 
     // Meeting with unavailable participant throws ParticipantNotAvailableException
     @Test
-    public void meeting_could_not_be_saved_due_to_unavailable_participant() throws MeetingRoomNotAvailableException, ParticipantNotAvailableException {
+    void meeting_could_not_be_saved_due_to_unavailable_participant() throws MeetingRoomNotAvailableException, ParticipantNotAvailableException {
         // Create a mock MeetingService
         MeetingService service = Mockito.mock(MeetingService.class);
 
@@ -95,7 +95,7 @@ public class MeetingCommandControllerTest {
 
     // Meeting with unavailable meeting room throws MeetingRoomNotAvailableException
     @Test
-    public void meeting_could_not_be_saved_due_to_unavailable_meeting_room() throws MeetingRoomNotAvailableException, ParticipantNotAvailableException {
+    void meeting_could_not_be_saved_due_to_unavailable_meeting_room() throws MeetingRoomNotAvailableException, ParticipantNotAvailableException {
         // Arrange
         MeetingService mockService = mock(MeetingService.class);
         ModelMapper modelMapper = new ModelMapper();
