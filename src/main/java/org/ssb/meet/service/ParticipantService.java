@@ -10,9 +10,24 @@ import org.ssb.meet.repository.ParticipantRepository;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The ParticipantService class is responsible for handling operations related to participants.
+ * It provides methods for saving, retrieving, and deleting participants.
+ *
+ * The ParticipantService class has the following dependencies:
+ * - ParticipantRepository: A repository interface for performing CRUD operations on ParticipantEntity objects.
+ * - ModelEntityMapper: A mapper interface for mapping between Participant and ParticipantEntity objects.
+ *
+ * The ParticipantService class has the following methods:
+ * - save: Saves a participant by mapping it to a ParticipantEntity object and calling the save method of the repository.
+ * - getAll: Retrieves all participants from the repository and maps them to Participant objects.
+ * - getById: Retrieves a participant by its ID from the repository and maps it to a Participant object.
+ * - delete: Deletes a participant by its ID from the repository.
+ *
+ */
 @Service
 @Transactional
-public class ParticipantService {
+public class ParticipantService implements CrudUseCase<Participant> {
 
     private final ParticipantRepository repository;
     private final ModelEntityMapper mapper;
@@ -26,20 +41,24 @@ public class ParticipantService {
         this.mapper = modelEntityMapper;
     }
 
-    public Participant saveParticipant(Participant participant) {
+    @Override
+    public Participant save(Participant participant) {
         ParticipantEntity entity = mapper.mapParticipantModelToEntity(participant);
         return mapper.mapParticipantEntityToModel(repository.save(entity));
     }
 
-    public List<Participant> getAllParticipants() {
+    @Override
+    public List<Participant> getAll() {
         return repository.findAll().stream().map(mapper::mapParticipantEntityToModel).toList();
     }
 
-    public Optional<Participant> getParticipantById(Long id) {
+    @Override
+    public Optional<Participant> getById(Long id) {
         return repository.findById(id).map(mapper::mapParticipantEntityToModel);
     }
 
-    public void deleteParticipantById(Long id) {
+    @Override
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 }

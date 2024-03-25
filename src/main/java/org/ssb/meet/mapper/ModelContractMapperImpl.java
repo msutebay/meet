@@ -6,9 +6,23 @@ import org.springframework.stereotype.Component;
 import org.ssb.meet.model.Meeting;
 import org.ssb.meet.model.MeetingRoom;
 import org.ssb.meet.model.Participant;
-
 import java.util.function.Function;
 
+/**
+ * ModelContractMapperImpl is a class that implements the ModelContractMapper interface.
+ * It provides methods to map between domain models and contract models.
+ * The mapping is done using the ModelMapper library.
+ *
+ * This class is annotated with @Component, indicating that it is a Spring component and can be autowired.
+ * It has a constructor that takes a ModelMapper object as a parameter and autowires it using the @Autowired annotation.
+ *
+ * The class implements the methods defined in the ModelContractMapper interface.
+ * These methods perform the mapping between domain models and contract models using the ModelMapper library.
+ *
+ * The class also defines two private helper methods, mapDomainModelToContract and mapContractToDomainModel,
+ * which are used to perform the actual mapping using lambda expressions.
+ *
+ */
 @Component
 public class ModelContractMapperImpl implements ModelContractMapper {
     private final ModelMapper modelMapper;

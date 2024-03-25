@@ -39,7 +39,7 @@ class MeetingCommandControllerTest {
         org.ssb.meet.model.Meeting meetingModel = new org.ssb.meet.model.Meeting();
         org.ssb.meet.model.Meeting savedMeetingModel = new org.ssb.meet.model.Meeting();
         when(mockMapper.mapMeetingContractToModel(meetingContract)).thenReturn(meetingModel);
-        when(mockService.saveMeeting(meetingModel)).thenReturn(savedMeetingModel);
+        when(mockService.save(meetingModel)).thenReturn(savedMeetingModel);
         Meeting savedMeetingContract = new Meeting();
         when(mockMapper.mapMeetingModelToContract(savedMeetingModel)).thenReturn(savedMeetingContract);
 
@@ -66,7 +66,7 @@ class MeetingCommandControllerTest {
         meeting.setParticipants(Collections.singletonList(participant));
         org.ssb.meet.model.Meeting modelMeeting = new org.ssb.meet.model.Meeting();
         Mockito.when(mapper.mapMeetingContractToModel(meeting)).thenReturn(modelMeeting);
-        Mockito.when(service.saveMeeting(modelMeeting)).thenThrow(new ParticipantNotAvailableException("Unavailable participant"));
+        Mockito.when(service.save(modelMeeting)).thenThrow(new ParticipantNotAvailableException("Unavailable participant"));
 
         // When & Then
         assertThrows(RuntimeException.class, () -> {
@@ -102,7 +102,7 @@ class MeetingCommandControllerTest {
         participant.setEmail("test@example.com");
         participants.add(participant);
         meeting.setParticipants(participants);
-        when(mockService.saveMeeting(any())).thenThrow(new MeetingRoomNotAvailableException("Meeting room is not available"));
+        when(mockService.save(any())).thenThrow(new MeetingRoomNotAvailableException("Meeting room is not available"));
 
         // When
         Executable saveMeeting = () -> controller.saveMeeting(meeting);

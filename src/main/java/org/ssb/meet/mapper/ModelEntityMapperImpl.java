@@ -9,9 +9,27 @@ import org.ssb.meet.entity.ParticipantEntity;
 import org.ssb.meet.model.Meeting;
 import org.ssb.meet.model.MeetingRoom;
 import org.ssb.meet.model.Participant;
-
 import java.util.function.Function;
 
+/**
+ * The ModelEntityMapperImpl class is responsible for mapping between domain models and entity objects.
+ * It implements the ModelEntityMapper interface and uses the ModelMapper library for mapping operations.
+ *
+ * This class provides methods to map Participant models to ParticipantEntity entities,
+ * ParticipantEntity entities to Participant models,
+ * MeetingRoom models to MeetingRoomEntity entities,
+ * MeetingRoomEntity entities to MeetingRoom models,
+ * Meeting models to MeetingEntity entities,
+ * and MeetingEntity entities to Meeting models.
+ *
+ * The mapping operations are performed using the ModelMapper library, which is injected into the class
+ * through the constructor. The ModelMapper library provides a convenient way to map objects with similar
+ * properties and automatically handles the mapping process based on the property names and types.
+ *
+ * The class also includes private helper methods for mapping domain models to entity objects and vice versa.
+ * These helper methods use functional interfaces and lambda expressions to define the mapping logic.
+ *
+ */
 @Component
 public class ModelEntityMapperImpl implements ModelEntityMapper{
 

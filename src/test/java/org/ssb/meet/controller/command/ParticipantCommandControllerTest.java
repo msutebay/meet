@@ -23,7 +23,7 @@ class ParticipantCommandControllerTest {
         Participant participant = new Participant(1L, "Mehmet Yildiz", "mehmetyildiz@example.com");
         org.ssb.meet.model.Participant savedParticipant = new org.ssb.meet.model.Participant(1L, "Mehmet Yildiz", "mehmetyildiz@example.com");
         when(mockMapper.mapParticipantContractToModel(participant)).thenReturn(savedParticipant);
-        when(mockService.saveParticipant(savedParticipant)).thenReturn(savedParticipant);
+        when(mockService.save(savedParticipant)).thenReturn(savedParticipant);
         when(mockMapper.mapParticipantModelToContract(savedParticipant)).thenReturn(participant);
 
         // When
@@ -33,7 +33,7 @@ class ParticipantCommandControllerTest {
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(participant, response.getBody());
         verify(mockMapper).mapParticipantContractToModel(participant);
-        verify(mockService).saveParticipant(savedParticipant);
+        verify(mockService).save(savedParticipant);
         verify(mockMapper).mapParticipantModelToContract(savedParticipant);
     }
 }

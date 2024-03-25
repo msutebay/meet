@@ -9,6 +9,17 @@ import org.ssb.meet.openapi.model.Participant;
 import org.ssb.meet.mapper.ModelContractMapper;
 import org.ssb.meet.service.ParticipantService;
 
+/**
+ * ParticipantCommandController is a REST controller class that handles participant-related operations.
+ * It implements the ParticipantCommandControllerApi interface.
+ * This class is responsible for handling HTTP requests and delegating the processing to the ParticipantService class.
+ * It also uses the ModelContractMapper class for mapping between contract and model objects.
+ *
+ * This class provides the following operations:
+ * - deleteParticipant: Deletes a participant by ID.
+ * - saveParticipant: Saves a new participant.
+ *
+ */
 @RestController
 public class ParticipantCommandController implements ParticipantCommandControllerApi {
 
@@ -28,13 +39,13 @@ public class ParticipantCommandController implements ParticipantCommandControlle
 
     @Override
     public ResponseEntity<Void> deleteParticipant(Long id) {
-        service.deleteParticipantById(id);
+        service.delete(id);
         return ResponseEntity.noContent().build();
     }
 
     @Override
     public ResponseEntity<Participant> saveParticipant(@Valid Participant participant) {
-        org.ssb.meet.model.Participant savedParticipant = service.saveParticipant(
+        org.ssb.meet.model.Participant savedParticipant = service.save(
                 mapper.mapParticipantContractToModel(participant)
         );
         return ResponseEntity.ok().body(mapper.mapParticipantModelToContract(savedParticipant));

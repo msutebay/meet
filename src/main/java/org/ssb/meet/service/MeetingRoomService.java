@@ -10,9 +10,22 @@ import org.ssb.meet.repository.MeetingRoomRepository;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The MeetingRoomService class is responsible for handling operations related to meeting rooms.
+ * It provides methods to save, retrieve, and delete meeting rooms.
+ *
+ * The MeetingRoomService class has a dependency on the MeetingRoomRepository and ModelEntityMapper interfaces.
+ *
+ * The MeetingRoomService class provides the following methods:
+ * - save: Saves a meeting room by mapping the MeetingRoom object to a MeetingRoomEntity and saving it in the repository.
+ * - getAll: Retrieves all meeting rooms from the repository and maps them to MeetingRoom objects.
+ * - getById: Retrieves a meeting room by its ID from the repository and maps it to a MeetingRoom object.
+ * - delete: Deletes a meeting room by its ID from the repository.
+ *
+ */
 @Service
 @Transactional
-public class MeetingRoomService {
+public class MeetingRoomService implements CrudUseCase<MeetingRoom> {
 
     private final MeetingRoomRepository repository;
     private final ModelEntityMapper mapper;
@@ -26,20 +39,24 @@ public class MeetingRoomService {
         this.mapper = modelEntityMapper;
     }
 
-    public MeetingRoom saveMeetingRoom(MeetingRoom meetingRoom) {
+    @Override
+    public MeetingRoom save(MeetingRoom meetingRoom) {
         MeetingRoomEntity entity = mapper.mapMeetingRoomModelToEntity(meetingRoom);
         return mapper.mapMeetingRoomEntityToModel(repository.save(entity));
     }
 
-    public List<MeetingRoom> getAllMeetingRooms() {
+    @Override
+    public List<MeetingRoom> getAll() {
         return repository.findAll().stream().map(mapper::mapMeetingRoomEntityToModel).toList();
     }
 
-    public Optional<MeetingRoom> getMeetingRoomById(Long id) {
+    @Override
+    public Optional<MeetingRoom> getById(Long id) {
         return repository.findById(id).map(mapper::mapMeetingRoomEntityToModel);
     }
 
-    public void deleteMeetingRoomById(Long id) {
+    @Override
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 }

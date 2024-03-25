@@ -41,7 +41,7 @@ class MeetingRoomCommandControllerTest {
         // Arrange
         MeetingRoom meetingRoom = new MeetingRoom(1L, "Valid Room");
         org.ssb.meet.model.MeetingRoom savedMeetingRoom = new org.ssb.meet.model.MeetingRoom(1L, "Valid Room");
-        when(mockService.saveMeetingRoom(savedMeetingRoom)).thenReturn(savedMeetingRoom);
+        when(mockService.save(savedMeetingRoom)).thenReturn(savedMeetingRoom);
         when(mockMapper.mapMeetingRoomContractToModel(meetingRoom)).thenReturn(savedMeetingRoom);
         when(mockMapper.mapMeetingRoomModelToContract(savedMeetingRoom)).thenReturn(meetingRoom);
 
