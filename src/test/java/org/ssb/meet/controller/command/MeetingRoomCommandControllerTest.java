@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.ssb.meet.mapper.ModelContractMapper;
 import org.ssb.meet.openapi.model.MeetingRoom;
-import org.ssb.meet.service.InputValidator;
+import org.ssb.meet.service.validators.InputValidator;
 import org.ssb.meet.service.MeetingRoomService;
 import static org.awaitility.Awaitility.await;
 import static org.junit.jupiter.api.Assertions.assertEquals;

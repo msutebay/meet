@@ -8,7 +8,7 @@ import org.ssb.meet.mapper.ModelContractMapper;
 import org.ssb.meet.openapi.api.MeetingRoomCommandControllerApi;
 import org.ssb.meet.openapi.model.ApiError;
 import org.ssb.meet.openapi.model.MeetingRoom;
-import org.ssb.meet.service.InputValidator;
+import org.ssb.meet.service.validators.InputValidator;
 import org.ssb.meet.service.MeetingRoomService;
 import java.util.Locale;
 

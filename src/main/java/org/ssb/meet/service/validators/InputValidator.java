@@ -1,4 +1,4 @@
-package org.ssb.meet.service;
+package org.ssb.meet.service.validators;
 
 import org.springframework.stereotype.Service;
 
