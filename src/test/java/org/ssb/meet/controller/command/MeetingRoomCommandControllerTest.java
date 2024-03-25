@@ -41,12 +41,14 @@ class MeetingRoomCommandControllerTest {
         // Arrange
         MeetingRoom meetingRoom = new MeetingRoom(1L, "Valid Room");
         org.ssb.meet.model.MeetingRoom savedMeetingRoom = new org.ssb.meet.model.MeetingRoom(1L, "Valid Room");
-
-        ResponseEntity<MeetingRoom> response = controller.saveMeetingRoom(meetingRoom);
         when(mockService.saveMeetingRoom(savedMeetingRoom)).thenReturn(savedMeetingRoom);
         when(mockMapper.mapMeetingRoomContractToModel(meetingRoom)).thenReturn(savedMeetingRoom);
         when(mockMapper.mapMeetingRoomModelToContract(savedMeetingRoom)).thenReturn(meetingRoom);
 
+        // When
+        ResponseEntity<MeetingRoom> response = controller.saveMeetingRoom(meetingRoom);
+
+        // Then
         await().untilAsserted(() -> assertNotNull(response));
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }
@@ -54,9 +56,13 @@ class MeetingRoomCommandControllerTest {
     // MeetingRoom name length is less than 3 characters
     @Test
     void short_meeting_room_names_are_not_allowed() {
+        // Arrange
         MeetingRoom meetingRoom = new MeetingRoom(1L, "AB");
+
+        // When
         ResponseEntity<MeetingRoom> response = controller.saveMeetingRoom(meetingRoom);
 
+        // Then
         await().untilAsserted(() -> assertNotNull(response));
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }
@@ -64,9 +70,13 @@ class MeetingRoomCommandControllerTest {
     // MeetingRoom name length is greater than 20 characters
     @Test
     void long_meeting_room_names_are_not_allowed() {
+        // Arrange
         MeetingRoom meetingRoom = new MeetingRoom(1L, "This is a very long meeting room name");
+
+        // When
         ResponseEntity<MeetingRoom> response = controller.saveMeetingRoom(meetingRoom);
 
+        // Then
         await().untilAsserted(() -> assertNotNull(response));
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
     }

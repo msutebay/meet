@@ -8,7 +8,6 @@ import org.ssb.meet.entity.ParticipantEntity;
 import org.ssb.meet.model.Meeting;
 import org.ssb.meet.model.MeetingRoom;
 import org.ssb.meet.model.Participant;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +24,12 @@ class ModelEntityMapperImplTest {
         // Arrange
         ModelMapper modelMapper = mock(ModelMapper.class);
         ModelEntityMapperImpl mapper = new ModelEntityMapperImpl(modelMapper);
-        Participant domainModel = new Participant(1L, "John Doe", "john.doe@example.com");
+        Participant domainModel = new Participant(1L, "Mehmet Yildiz", "mehmet.yildiz@example.com");
 
-        // Act
+        // When
         ParticipantEntity entity = mapper.mapParticipantModelToEntity(domainModel);
 
-        // Assert
+        // Then
         assertEquals(domainModel.getId(), entity.getId());
         assertEquals(domainModel.getName(), entity.getName());
         assertEquals(domainModel.getEmail(), entity.getEmail());
@@ -42,12 +41,12 @@ class ModelEntityMapperImplTest {
         // Arrange
         ModelMapper modelMapper = new ModelMapper();
         ModelEntityMapperImpl mapper = new ModelEntityMapperImpl(modelMapper);
-        ParticipantEntity entity = new ParticipantEntity(1L, "John Doe", "john.doe@example.com");
+        ParticipantEntity entity = new ParticipantEntity(1L, "Mehmet Yildiz", "mehmet.yildiz@example.com");
 
-        // Act
+        // When
         Participant domainModel = mapper.mapParticipantEntityToModel(entity);
 
-        // Assert
+        // Then
         assertEquals(entity.getId(), domainModel.getId());
         assertEquals(entity.getName(), domainModel.getName());
         assertEquals(entity.getEmail(), domainModel.getEmail());
@@ -62,10 +61,10 @@ class ModelEntityMapperImplTest {
         MeetingRoomEntity entity = new MeetingRoomEntity(1L);
         entity.setName("Conference Room");
 
-        // Act
+        // When
         MeetingRoom domainModel = mapper.mapMeetingRoomEntityToModel(entity);
 
-        // Assert
+        // Then
         assertEquals(entity.getId(), domainModel.getId());
         assertEquals(entity.getName(), domainModel.getName());
     }
@@ -84,13 +83,13 @@ class ModelEntityMapperImplTest {
         meetingRoomEntity.setName("Meeting Room 1");
         entity.setMeetingRoom(meetingRoomEntity);
         List<ParticipantEntity> participants = new ArrayList<>();
-        participants.add(new ParticipantEntity(1L, "John Doe", "john.doe@example.com"));
+        participants.add(new ParticipantEntity(1L, "Mehmet Yildiz", "mehmet.yildiz@example.com"));
         entity.setParticipants(participants);
 
-        // Act
+        // When
         Meeting result = mapper.mapMeetingEntityToModel(entity);
 
-        // Assert
+        // Then
         assertEquals(entity.getId(), result.getId());
         assertEquals(entity.getTitle(), result.getTitle());
         assertEquals(entity.getStartTime(), result.getStartTime());

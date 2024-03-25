@@ -20,21 +20,18 @@ class ParticipantCommandControllerTest {
         ParticipantCommandController controller = new ParticipantCommandController();
         controller.setService(mockService);
         controller.setMapper(mockMapper);
-
-        Participant participant = new Participant(1L, "John Doe", "johndoe@example.com");
-        org.ssb.meet.model.Participant savedParticipant = new org.ssb.meet.model.Participant(1L, "John Doe", "johndoe@example.com");
-
+        Participant participant = new Participant(1L, "Mehmet Yildiz", "mehmetyildiz@example.com");
+        org.ssb.meet.model.Participant savedParticipant = new org.ssb.meet.model.Participant(1L, "Mehmet Yildiz", "mehmetyildiz@example.com");
         when(mockMapper.mapParticipantContractToModel(participant)).thenReturn(savedParticipant);
         when(mockService.saveParticipant(savedParticipant)).thenReturn(savedParticipant);
         when(mockMapper.mapParticipantModelToContract(savedParticipant)).thenReturn(participant);
 
-        // Act
+        // When
         ResponseEntity<Participant> response = controller.saveParticipant(participant);
 
-        // Assert
+        // Then
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(participant, response.getBody());
-
         verify(mockMapper).mapParticipantContractToModel(participant);
         verify(mockService).saveParticipant(savedParticipant);
         verify(mockMapper).mapParticipantModelToContract(savedParticipant);
